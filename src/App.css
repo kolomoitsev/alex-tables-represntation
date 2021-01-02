@@ -14,10 +14,6 @@
   margin: 50px 0;
 }
 
-table{
-  width: 500px;
-}
-
 .colorDarkPurple{
   background-color: #e4e2e2;
 }
@@ -31,5 +27,17 @@ table{
 
 .columnWidth td{
   width: 14.28%;
-  /*width: 10%;*/
+  /*width: 35px;*/
+}
+
+.sticky-col{
+  position: -webkit-sticky;
+  position: sticky;
+  background-color: white;
+
+  width: 60px;
+  min-width: 60px;
+  max-width: 60px;
+  left: 0px;
+
 }
