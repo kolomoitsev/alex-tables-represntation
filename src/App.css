@@ -3,7 +3,7 @@
 
 .App {
   text-align: center;
-
+  display: flex;
 }
 
 .App-link {
@@ -15,7 +15,7 @@
 }
 
 table{
-  width: 100%;
+  width: 500px;
 }
 
 .colorDarkPurple{

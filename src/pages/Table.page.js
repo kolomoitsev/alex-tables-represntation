@@ -172,27 +172,31 @@ const TablePage = () => {
         <div className="App">
             <table border="1">
                 <tr>
-                    <th colSpan={7}>{fullName && fullName}</th>
+                    {/*<th colSpan={8}>{fullName && fullName}</th>*/}
+                    <th colSpan={8}>ПСГ Богородчани</th>
                 </tr>
+
                 <tr>
-                    <th colSpan={5}>{smallName && smallName}</th>
-                    <th colSpan={2}>ПСГ</th>
+                    {/*<th colSpan={5}>{smallName && smallName}</th>*/}
+                    <th colSpan={5}>ДКС Богородчани</th>
+                    <th colSpan={3}>ПСГ</th>
                 </tr>
 
                 <tr>
                     <th colSpan={3}>ГПА Ц-6</th>
                     <th colSpan={2}>6</th>
-                    <th colSpan={1}>Количество</th>
+                    <th colSpan={2}>К-сть свердловин</th>
                     <th colSpan={1}>100</th>
                 </tr>
 
                 <tr>
-                    <th>Date</th>
+                    <th>Година</th>
                     <th>Pвх</th>
-                    <th>Pвых</th>
-                    <th>E</th>
-                    <th>GPA</th>
-                    <th>Q</th>
+                    <th>Pвих</th>
+                    <th>Є</th>
+                    <th>ГПА</th>
+                    <th>Q зак.</th>
+                    <th>Q відб.</th>
                     <th>с.рб.</th>
                 </tr>
                 {
@@ -202,6 +206,7 @@ const TablePage = () => {
                             <td>{item.out}</td>
                             <td className="colorDarkPurple">{item.diff}</td>
                             <td className="colorDarkPurple">{item.gpa}</td>
+                            <td> </td>
                             <td className="colorPurple">{item.q}</td>
                             <th>{item.amount}</th>
                         </tr> :
@@ -210,6 +215,392 @@ const TablePage = () => {
                             <td>{item.avgEn}</td>
                             <td>{item.avgOu}</td>
                             <td>{Math.fround(item.avgE).toFixed(1) }</td>
+                            <td> </td>
+                            <td> </td>
+                            <td>{item.avgQ}</td>
+                            <th>{item.avgA}</th>
+                        </tr>)
+                }
+
+
+
+            </table>
+            <table border="1">
+                <tr>
+                    {/*<th colSpan={8}>{fullName && fullName}</th>*/}
+                    <th colSpan={8}>ПСГ Богородчани</th>
+                </tr>
+
+                <tr>
+                    {/*<th colSpan={5}>{smallName && smallName}</th>*/}
+                    <th colSpan={5}>ДКС Богородчани</th>
+                    <th colSpan={3}>ПСГ</th>
+                </tr>
+
+                <tr>
+                    <th colSpan={3}>ГПА Ц-6</th>
+                    <th colSpan={2}>6</th>
+                    <th colSpan={2}>К-сть свердловин</th>
+                    <th colSpan={1}>100</th>
+                </tr>
+
+                <tr>
+                    <th>Година</th>
+                    <th>Pвх</th>
+                    <th>Pвих</th>
+                    <th>Є</th>
+                    <th>ГПА</th>
+                    <th>Q зак.</th>
+                    <th>Q відб.</th>
+                    <th>с.рб.</th>
+                </tr>
+                {
+                    diffData.map(item => item.flag === 'values' ? <tr className="columnWidth" key={item.key}>
+                            <td>{new Date(item.date1).toLocaleString().slice(12, 17)}</td>
+                            <td>{item.ent}</td>
+                            <td>{item.out}</td>
+                            <td className="colorDarkPurple">{item.diff}</td>
+                            <td className="colorDarkPurple">{item.gpa}</td>
+                            <td> </td>
+                            <td className="colorPurple">{item.q}</td>
+                            <th>{item.amount}</th>
+                        </tr> :
+                        <tr className="columnWidth avgRow" key={item.key}>
+                            <td>K:{item.date}</td>
+                            <td>{item.avgEn}</td>
+                            <td>{item.avgOu}</td>
+                            <td>{Math.fround(item.avgE).toFixed(1) }</td>
+                            <td> </td>
+                            <td> </td>
+                            <td>{item.avgQ}</td>
+                            <th>{item.avgA}</th>
+                        </tr>)
+                }
+
+
+
+            </table>
+            <table border="1">
+                <tr>
+                    {/*<th colSpan={8}>{fullName && fullName}</th>*/}
+                    <th colSpan={8}>ПСГ Богородчани</th>
+                </tr>
+
+                <tr>
+                    {/*<th colSpan={5}>{smallName && smallName}</th>*/}
+                    <th colSpan={5}>ДКС Богородчани</th>
+                    <th colSpan={3}>ПСГ</th>
+                </tr>
+
+                <tr>
+                    <th colSpan={3}>ГПА Ц-6</th>
+                    <th colSpan={2}>6</th>
+                    <th colSpan={2}>К-сть свердловин</th>
+                    <th colSpan={1}>100</th>
+                </tr>
+
+                <tr>
+                    <th>Година</th>
+                    <th>Pвх</th>
+                    <th>Pвих</th>
+                    <th>Є</th>
+                    <th>ГПА</th>
+                    <th>Q зак.</th>
+                    <th>Q відб.</th>
+                    <th>с.рб.</th>
+                </tr>
+                {
+                    diffData.map(item => item.flag === 'values' ? <tr className="columnWidth" key={item.key}>
+                            <td>{new Date(item.date1).toLocaleString().slice(12, 17)}</td>
+                            <td>{item.ent}</td>
+                            <td>{item.out}</td>
+                            <td className="colorDarkPurple">{item.diff}</td>
+                            <td className="colorDarkPurple">{item.gpa}</td>
+                            <td> </td>
+                            <td className="colorPurple">{item.q}</td>
+                            <th>{item.amount}</th>
+                        </tr> :
+                        <tr className="columnWidth avgRow" key={item.key}>
+                            <td>K:{item.date}</td>
+                            <td>{item.avgEn}</td>
+                            <td>{item.avgOu}</td>
+                            <td>{Math.fround(item.avgE).toFixed(1) }</td>
+                            <td> </td>
+                            <td> </td>
+                            <td>{item.avgQ}</td>
+                            <th>{item.avgA}</th>
+                        </tr>)
+                }
+
+
+
+            </table>
+            <table border="1">
+                <tr>
+                    {/*<th colSpan={8}>{fullName && fullName}</th>*/}
+                    <th colSpan={8}>ПСГ Богородчани</th>
+                </tr>
+
+                <tr>
+                    {/*<th colSpan={5}>{smallName && smallName}</th>*/}
+                    <th colSpan={5}>ДКС Богородчани</th>
+                    <th colSpan={3}>ПСГ</th>
+                </tr>
+
+                <tr>
+                    <th colSpan={3}>ГПА Ц-6</th>
+                    <th colSpan={2}>6</th>
+                    <th colSpan={2}>К-сть свердловин</th>
+                    <th colSpan={1}>100</th>
+                </tr>
+
+                <tr>
+                    <th>Година</th>
+                    <th>Pвх</th>
+                    <th>Pвих</th>
+                    <th>Є</th>
+                    <th>ГПА</th>
+                    <th>Q зак.</th>
+                    <th>Q відб.</th>
+                    <th>с.рб.</th>
+                </tr>
+                {
+                    diffData.map(item => item.flag === 'values' ? <tr className="columnWidth" key={item.key}>
+                            <td>{new Date(item.date1).toLocaleString().slice(12, 17)}</td>
+                            <td>{item.ent}</td>
+                            <td>{item.out}</td>
+                            <td className="colorDarkPurple">{item.diff}</td>
+                            <td className="colorDarkPurple">{item.gpa}</td>
+                            <td> </td>
+                            <td className="colorPurple">{item.q}</td>
+                            <th>{item.amount}</th>
+                        </tr> :
+                        <tr className="columnWidth avgRow" key={item.key}>
+                            <td>K:{item.date}</td>
+                            <td>{item.avgEn}</td>
+                            <td>{item.avgOu}</td>
+                            <td>{Math.fround(item.avgE).toFixed(1) }</td>
+                            <td> </td>
+                            <td> </td>
+                            <td>{item.avgQ}</td>
+                            <th>{item.avgA}</th>
+                        </tr>)
+                }
+
+
+
+            </table>
+            <table border="1">
+                <tr>
+                    {/*<th colSpan={8}>{fullName && fullName}</th>*/}
+                    <th colSpan={8}>ПСГ Богородчани</th>
+                </tr>
+
+                <tr>
+                    {/*<th colSpan={5}>{smallName && smallName}</th>*/}
+                    <th colSpan={5}>ДКС Богородчани</th>
+                    <th colSpan={3}>ПСГ</th>
+                </tr>
+
+                <tr>
+                    <th colSpan={3}>ГПА Ц-6</th>
+                    <th colSpan={2}>6</th>
+                    <th colSpan={2}>К-сть свердловин</th>
+                    <th colSpan={1}>100</th>
+                </tr>
+
+                <tr>
+                    <th>Година</th>
+                    <th>Pвх</th>
+                    <th>Pвих</th>
+                    <th>Є</th>
+                    <th>ГПА</th>
+                    <th>Q зак.</th>
+                    <th>Q відб.</th>
+                    <th>с.рб.</th>
+                </tr>
+                {
+                    diffData.map(item => item.flag === 'values' ? <tr className="columnWidth" key={item.key}>
+                            <td>{new Date(item.date1).toLocaleString().slice(12, 17)}</td>
+                            <td>{item.ent}</td>
+                            <td>{item.out}</td>
+                            <td className="colorDarkPurple">{item.diff}</td>
+                            <td className="colorDarkPurple">{item.gpa}</td>
+                            <td> </td>
+                            <td className="colorPurple">{item.q}</td>
+                            <th>{item.amount}</th>
+                        </tr> :
+                        <tr className="columnWidth avgRow" key={item.key}>
+                            <td>K:{item.date}</td>
+                            <td>{item.avgEn}</td>
+                            <td>{item.avgOu}</td>
+                            <td>{Math.fround(item.avgE).toFixed(1) }</td>
+                            <td> </td>
+                            <td> </td>
+                            <td>{item.avgQ}</td>
+                            <th>{item.avgA}</th>
+                        </tr>)
+                }
+
+
+
+            </table>
+            <table border="1">
+                <tr>
+                    {/*<th colSpan={8}>{fullName && fullName}</th>*/}
+                    <th colSpan={8}>ПСГ Богородчани</th>
+                </tr>
+
+                <tr>
+                    {/*<th colSpan={5}>{smallName && smallName}</th>*/}
+                    <th colSpan={5}>ДКС Богородчани</th>
+                    <th colSpan={3}>ПСГ</th>
+                </tr>
+
+                <tr>
+                    <th colSpan={3}>ГПА Ц-6</th>
+                    <th colSpan={2}>6</th>
+                    <th colSpan={2}>К-сть свердловин</th>
+                    <th colSpan={1}>100</th>
+                </tr>
+
+                <tr>
+                    <th>Година</th>
+                    <th>Pвх</th>
+                    <th>Pвих</th>
+                    <th>Є</th>
+                    <th>ГПА</th>
+                    <th>Q зак.</th>
+                    <th>Q відб.</th>
+                    <th>с.рб.</th>
+                </tr>
+                {
+                    diffData.map(item => item.flag === 'values' ? <tr className="columnWidth" key={item.key}>
+                            <td>{new Date(item.date1).toLocaleString().slice(12, 17)}</td>
+                            <td>{item.ent}</td>
+                            <td>{item.out}</td>
+                            <td className="colorDarkPurple">{item.diff}</td>
+                            <td className="colorDarkPurple">{item.gpa}</td>
+                            <td> </td>
+                            <td className="colorPurple">{item.q}</td>
+                            <th>{item.amount}</th>
+                        </tr> :
+                        <tr className="columnWidth avgRow" key={item.key}>
+                            <td>K:{item.date}</td>
+                            <td>{item.avgEn}</td>
+                            <td>{item.avgOu}</td>
+                            <td>{Math.fround(item.avgE).toFixed(1) }</td>
+                            <td> </td>
+                            <td> </td>
+                            <td>{item.avgQ}</td>
+                            <th>{item.avgA}</th>
+                        </tr>)
+                }
+
+
+
+            </table>
+            <table border="1">
+                <tr>
+                    {/*<th colSpan={8}>{fullName && fullName}</th>*/}
+                    <th colSpan={8}>ПСГ Богородчани</th>
+                </tr>
+
+                <tr>
+                    {/*<th colSpan={5}>{smallName && smallName}</th>*/}
+                    <th colSpan={5}>ДКС Богородчани</th>
+                    <th colSpan={3}>ПСГ</th>
+                </tr>
+
+                <tr>
+                    <th colSpan={3}>ГПА Ц-6</th>
+                    <th colSpan={2}>6</th>
+                    <th colSpan={2}>К-сть свердловин</th>
+                    <th colSpan={1}>100</th>
+                </tr>
+
+                <tr>
+                    <th>Година</th>
+                    <th>Pвх</th>
+                    <th>Pвих</th>
+                    <th>Є</th>
+                    <th>ГПА</th>
+                    <th>Q зак.</th>
+                    <th>Q відб.</th>
+                    <th>с.рб.</th>
+                </tr>
+                {
+                    diffData.map(item => item.flag === 'values' ? <tr className="columnWidth" key={item.key}>
+                            <td>{new Date(item.date1).toLocaleString().slice(12, 17)}</td>
+                            <td>{item.ent}</td>
+                            <td>{item.out}</td>
+                            <td className="colorDarkPurple">{item.diff}</td>
+                            <td className="colorDarkPurple">{item.gpa}</td>
+                            <td> </td>
+                            <td className="colorPurple">{item.q}</td>
+                            <th>{item.amount}</th>
+                        </tr> :
+                        <tr className="columnWidth avgRow" key={item.key}>
+                            <td>K:{item.date}</td>
+                            <td>{item.avgEn}</td>
+                            <td>{item.avgOu}</td>
+                            <td>{Math.fround(item.avgE).toFixed(1) }</td>
+                            <td> </td>
+                            <td> </td>
+                            <td>{item.avgQ}</td>
+                            <th>{item.avgA}</th>
+                        </tr>)
+                }
+
+
+
+            </table>
+            <table border="1">
+                <tr>
+                    {/*<th colSpan={8}>{fullName && fullName}</th>*/}
+                    <th colSpan={8}>ПСГ Богородчани</th>
+                </tr>
+
+                <tr>
+                    {/*<th colSpan={5}>{smallName && smallName}</th>*/}
+                    <th colSpan={5}>ДКС Богородчани</th>
+                    <th colSpan={3}>ПСГ</th>
+                </tr>
+
+                <tr>
+                    <th colSpan={3}>ГПА Ц-6</th>
+                    <th colSpan={2}>6</th>
+                    <th colSpan={2}>К-сть свердловин</th>
+                    <th colSpan={1}>100</th>
+                </tr>
+
+                <tr>
+                    <th>Година</th>
+                    <th>Pвх</th>
+                    <th>Pвих</th>
+                    <th>Є</th>
+                    <th>ГПА</th>
+                    <th>Q зак.</th>
+                    <th>Q відб.</th>
+                    <th>с.рб.</th>
+                </tr>
+                {
+                    diffData.map(item => item.flag === 'values' ? <tr className="columnWidth" key={item.key}>
+                            <td>{new Date(item.date1).toLocaleString().slice(12, 17)}</td>
+                            <td>{item.ent}</td>
+                            <td>{item.out}</td>
+                            <td className="colorDarkPurple">{item.diff}</td>
+                            <td className="colorDarkPurple">{item.gpa}</td>
+                            <td> </td>
+                            <td className="colorPurple">{item.q}</td>
+                            <th>{item.amount}</th>
+                        </tr> :
+                        <tr className="columnWidth avgRow" key={item.key}>
+                            <td>K:{item.date}</td>
+                            <td>{item.avgEn}</td>
+                            <td>{item.avgOu}</td>
+                            <td>{Math.fround(item.avgE).toFixed(1) }</td>
+                            <td> </td>
                             <td> </td>
                             <td>{item.avgQ}</td>
                             <th>{item.avgA}</th>
