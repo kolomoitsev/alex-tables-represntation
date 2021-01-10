@@ -1,24 +1,48 @@
 import React from "react";
 
-const TableRow = (item) => {
+const TableRow = ({ item, ids, count }) => {
 
-    let items = [];
+    const drawItems = ({ item, ids, count }) => {
 
-    if(item.item){
-        for (const [key, value] of Object.entries(item.item)) {
-            items.push({ key, value })
+        const elements = [];
+
+        let ind = 0;
+
+        for(const i of ids){
+
+            if(ind === 0){
+                elements.push(new Date(item["1"]).toLocaleString().slice(12, 17))
+            }
+            else if(!i){
+
+                let empty = null
+                elements.push(empty)
+
+            } else{
+                let full = item[i]
+                elements.push(full)
+
+            }
+
+            ind++;
+
         }
+
+        return(
+            elements.length && elements.map((item, index) => item ? index === 0 ? <td className="sticky-col">{item}</td> : <td>{item}</td> : <td></td>)
+        )
+
     }
 
     return(
-        <tr className="columnWidth">
-            {
-                items.length && items.map((i, index) => index === 0 ?
-                    <td className="sticky-col" key={i.key}>
-                         { new Date(i.value).toLocaleString().slice(12, 17) }
-                    </td> :
-                    <td key={i.key}>{i.value}</td> )
-            }
+        count === 7 ? <tr className="columnWidth yellowRow">
+
+            { drawItems({ item , ids } ) }
+
+        </tr> : <tr className="columnWidth">
+
+            { drawItems({ item , ids } ) }
+
         </tr>
     )
 }

@@ -69,3 +69,51 @@
     font-weight: 600;
     text-align: center;
 }
+
+
+
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th, th {
+    min-width: 70px;
+    overflow: hidden;
+    padding: 5px;
+}
+
+table .name {
+    min-width: 200px;
+    overflow: hidden;
+    color: blue;
+}
+
+table{
+    display: block;
+    overflow-x: auto;
+    overflow-y: auto;
+    white-space: nowrap;
+}
+
+.d-n{
+    display: none;
+}
+
+.xl654306{
+    border-right:.5pt solid black;
+    border-left: none;
+}
+
+.greyRow{
+    background-color: #cccccc;
+}
+
+.yellowRow{
+    background-color: #fcfb9b;
+}
+
+.yellowRow td.sticky-col{
+    background-color: #fcfb9b;
+}
