@@ -1,9 +1,22 @@
 import React, {useEffect, useState} from 'react';
 import {DatePicker} from 'antd'
 import axios from 'axios';
-import moment from 'moment';
 
 import TableRow from "../TableRow.component";
+
+import moment from 'moment'
+
+const points = [null, null, null, 155, 139, null,
+    196, null, 113, 170, 156, 140, null, 197, 101, 102, null,
+    198, null, 114, 171, 157, 141, null, 199, null, 115, 172,
+    152, 141, null, 200, null, 116, 173, 103, 117, 104, 118,
+    159, 143, null, 201, 160, 144, null, 202,
+    161, 145, null, 203, 162, 146, null, 204, 163, 147, null, 205,
+    null, null, null, 105, null, 119, 174, 106, null, 120, 175, 107, null,
+    121, 176, 108, null, 122, 177, 151, 135, null, 192, 152, 136, null, 193,
+    null, 110, 167, 153, 137, null, 194, null, 111, 168, 154, 138, null,
+    195, null, 112, 169, 164, 148, null, 206, null, 123, 178, 165,
+    149, null, 207, null, 124, 179, 166, 150, null, 208, null, 125, 180]
 
 const TablePage = () => {
 
@@ -14,19 +27,7 @@ const TablePage = () => {
     const [dataAllPoints, setDataAllPoints] = useState([]);
     const [concatData, setConcatData] = useState([]);
     const [readyRows, setReadyRows] = useState([])
-
-    const points = [null, null, null, 155, 139, null,
-        196, null, 113, 170, 156, 140, null, 197, 101, 102, null,
-        198, null, 114, 171, 157, 141, null, 199, null, 115, 172,
-        152, 141, null, 200, null, 116, 173, 103, 117, 104, 118,
-        159, 143, null, 201, 160, 144, null, 202,
-        161, 145, null, 203, 162, 146, null, 204, 163, 147, null, 205,
-        null, null, null, 105, null, 119, 174, 106, null, 120, 175, 107, null,
-        121, 176, 108, null, 122, 177, 151, 135, null, 192, 152, 136, null, 193,
-        null, 110, 167, 153, 137, null, 194, null, 111, 168, 154, 138, null,
-        195, null, 112, 169, 164, 148, null, 206, null, 123, 178, 165,
-        149, null, 207, null, 124, 179, 166, 150, null, 208, null, 125, 180]
-
+    
     useEffect(() => {
 
 
@@ -50,8 +51,9 @@ const TablePage = () => {
 
                 if (item) {
 
+                    const nextDay = moment(new Date(filterDate)).add(1, 'days').format('YYYY-MM-DD')
 
-                    const url_filter = `https://oask-gtp-web-api2.herokuapp.com/pointvalues/${item}?start=${filterDate} 00:00:00&end=${dateNow} 23:00:00`;
+                    const url_filter = `https://oask-gtp-web-api2.herokuapp.com/pointvalues/${item}?start=${filterDate} 00:00:00&end=${nextDay} 00:00:00`;
 
                     const url_default = `https://oask-gtp-web-api2.herokuapp.com/pointvalues/${item}?start=${dateNow} 00:00:00&end=${dateNow} 23:00:00`
 
@@ -65,7 +67,11 @@ const TablePage = () => {
                         })
                         .catch(err => console.log(err))
 
+                    // console.log({ filterDate, nextDay})
+
                 }
+
+
 
                 i++;
 
@@ -144,12 +150,6 @@ const TablePage = () => {
 
         setFilterDate(dateString);
 
-        // console.log(dateString);
-        // console.log(dateString.split('/').join('-'))
-        // console.log(moment());
-        // console.log(moment(dateString))
-        // console.log(moment(dateString.split('/').join('-'), 'YYYY-MM-DD'))
-
     }
 
     return (
@@ -163,15 +163,22 @@ const TablePage = () => {
 
             {loaded && <div className="App">
 
-                <div className="datePicker">
-                    <h2>Select date</h2>
-                    <DatePicker defaultValue={!filterDate ? moment() : moment(filterDate.split('/').join('-'), 'YYYY-MM-DD') } format={'YYYY/MM/DD'} onChange={onChange}/>
+                <div className="datePickerBlock">
+                    <div className="datePicker">
+                        <h2>Select date</h2>
+                        <DatePicker
+                            defaultValue={!filterDate ? moment() : moment(filterDate.split('/').join('-'), 'YYYY-MM-DD') }
+                            format={'YYYY-MM-DD'}
+                            onChange={onChange}
+                        />
+                    </div>
                 </div>
-
 
                 <table>
                     <tr>
-                        <th className="sticky-col" rowSpan={4}> Година</th>
+                        <th className="sticky-col" rowSpan={4}>
+                            Година
+                        </th>
                         <th colSpan={2}> ОГСУ,усього</th>
                         <th colSpan={7}> ПСГ Богородчани</th>
                         <th colSpan={11}> ПСГ Опарське</th>

@@ -117,3 +117,8 @@ table{
 .yellowRow td.sticky-col{
     background-color: #fcfb9b;
 }
+
+.showDatePicker{
+    font-size: 13px;
+}
+
