@@ -50,6 +50,7 @@ const TablePage = () => {
 
                 if (item) {
 
+
                     const url_filter = `https://oask-gtp-web-api2.herokuapp.com/pointvalues/${item}?start=${filterDate} 00:00:00&end=${dateNow} 23:00:00`;
 
                     const url_default = `https://oask-gtp-web-api2.herokuapp.com/pointvalues/${item}?start=${dateNow} 00:00:00&end=${dateNow} 23:00:00`
@@ -158,7 +159,7 @@ const TablePage = () => {
 
                 <div className="datePicker">
                     <h2>Select date</h2>
-                    <DatePicker defaultValue={!filterDate ? moment() : moment(filterDate) } format={'YYYY/MM/DD'} onChange={onChange}/>
+                    <DatePicker defaultValue={!filterDate ? moment() : moment(new Date(filterDate)) } format={'YYYY/MM/DD'} onChange={onChange}/>
                 </div>
 
 
