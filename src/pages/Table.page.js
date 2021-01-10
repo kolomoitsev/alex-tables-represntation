@@ -418,7 +418,7 @@ const TablePage = () => {
 
 
                     <tr className="greyRow">
-                        <td>1</td>
+                        <td className="sticky-col">1</td>
                         <td>2</td>
                         <td>3</td>
                         <td>4</td>
@@ -545,7 +545,7 @@ const TablePage = () => {
                     </tr>
 
                     <tr className="greyRow">
-                        <td>&nbsp;</td>
+                        <td className="sticky-col">&nbsp;</td>
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
                         <td>155</td>
