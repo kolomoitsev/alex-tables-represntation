@@ -11,7 +11,9 @@ const TableRow = ({ item, ids, count }) => {
         for(const i of ids){
 
             if(ind === 0){
-                elements.push(new Date(item["1"]).toLocaleString().slice(12, 17))
+                //elements.push(new Date(item["1"]).toLocaleString().slice(12, 17))
+                //elements.push(item["1"])
+                elements.push(item["1"].split('T')[1])
             }
             else if(!i){
 

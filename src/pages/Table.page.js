@@ -27,7 +27,7 @@ const TablePage = () => {
     const [dataAllPoints, setDataAllPoints] = useState([]);
     const [concatData, setConcatData] = useState([]);
     const [readyRows, setReadyRows] = useState([])
-    
+
     useEffect(() => {
 
 
