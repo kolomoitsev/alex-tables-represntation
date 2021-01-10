@@ -144,6 +144,12 @@ const TablePage = () => {
 
         setFilterDate(dateString);
 
+        // console.log(dateString);
+        // console.log(dateString.split('/').join('-'))
+        // console.log(moment());
+        // console.log(moment(dateString))
+        // console.log(moment(dateString.split('/').join('-'), 'YYYY-MM-DD'))
+
     }
 
     return (
@@ -159,7 +165,7 @@ const TablePage = () => {
 
                 <div className="datePicker">
                     <h2>Select date</h2>
-                    <DatePicker defaultValue={!filterDate ? moment() : moment(new Date(filterDate)) } format={'YYYY/MM/DD'} onChange={onChange}/>
+                    <DatePicker defaultValue={!filterDate ? moment() : moment(filterDate.split('/').join('-'), 'YYYY-MM-DD') } format={'YYYY/MM/DD'} onChange={onChange}/>
                 </div>
 
 
